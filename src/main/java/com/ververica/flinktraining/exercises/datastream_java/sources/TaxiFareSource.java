@@ -109,9 +109,10 @@ public class TaxiFareSource implements SourceFunction<TaxiFare> {
 	@Override
 	public void run(SourceContext<TaxiFare> sourceContext) throws Exception {
 
-		gzipStream = new GZIPInputStream(new FileInputStream(dataFilePath));
-		reader = new BufferedReader(new InputStreamReader(gzipStream, "UTF-8"));
+//		gzipStream = new GZIPInputStream(new FileInputStream(dataFilePath));
+//		reader = new BufferedReader(new InputStreamReader(gzipStream, "UTF-8"));
 
+		reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/jan/dev/flink/flink-training-exercises/nycTaxiFares 2")));
 		generateUnorderedStream(sourceContext);
 
 		this.reader.close();

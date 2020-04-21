@@ -17,6 +17,7 @@
 package com.ververica.flinktraining.exercises.datastream_java.sources;
 
 import com.ververica.flinktraining.exercises.datastream_java.datatypes.TaxiRide;
+import com.ververica.flinktraining.exercises.datastream_java.utils.ExerciseBase;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.api.watermark.Watermark;
@@ -107,8 +108,10 @@ public class TaxiRideSource implements SourceFunction<TaxiRide> {
 	@Override
 	public void run(SourceContext<TaxiRide> sourceContext) throws Exception {
 
-		gzipStream = new GZIPInputStream(new FileInputStream(dataFilePath));
-		reader = new BufferedReader(new InputStreamReader(gzipStream, "UTF-8"));
+//		gzipStream = new GZIPInputStream(new FileInputStream(dataFilePath));
+//		reader = new BufferedReader(new InputStreamReader(gzipStream, "UTF-8"));
+
+		reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/jan/dev/flink/flink-training-exercises/nycTaxiRides 2")));
 
 		generateUnorderedStream(sourceContext);
 

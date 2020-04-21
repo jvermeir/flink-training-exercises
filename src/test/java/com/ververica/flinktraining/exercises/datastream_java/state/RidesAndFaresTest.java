@@ -39,6 +39,7 @@ public class RidesAndFaresTest extends TaxiRideTestBase<Tuple2<TaxiRide, TaxiFar
 	final TaxiRide ride2 = testRide(2);
 	final TaxiFare fare1 = testFare(1);
 	final TaxiFare fare2 = testFare(2);
+	final TaxiFare fare3 = testFare(3);
 
 	@Test
 	public void testInOrder() throws Exception {
@@ -55,7 +56,7 @@ public class RidesAndFaresTest extends TaxiRideTestBase<Tuple2<TaxiRide, TaxiFar
 	@Test
 	public void testOutOfOrder() throws Exception {
 		TestRideSource rides = new TestRideSource(ride1, ride2);
-		TestFareSource fares = new TestFareSource(fare2, fare1);
+		TestFareSource fares = new TestFareSource(fare3, fare2, fare3, fare3, fare3, fare1);
 
 		ArrayList<Tuple2<TaxiRide, TaxiFare>> expected = Lists.newArrayList(
 				new Tuple2<>(ride1, fare1),
